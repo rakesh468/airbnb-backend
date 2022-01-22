@@ -1,21 +1,23 @@
 import { client } from "./index.js";
+import { ObjectId } from "mongodb";
 import bcrypt from "bcrypt";
 
 async function UpdateRoomsById(id, data) {
   return await client
     .db("airbnb")
     .collection("rooms")
-    .updateOne({ id: id }, { $set: data });
+    .updateOne({ _id: ObjectId(id) }, { $set: data });
 }
 async function DeleteRoomById(id) {
-  return await client.db("airbnb").collection("rooms").deleteOne({ id: id });
+  return await client.db("airbnb").collection("rooms").deleteOne({_id: ObjectId(id) });
 }
 async function CreateRooms(data) {
   return await client.db("airbnb").collection("rooms").insertMany(data);
 }
 
 async function GetroomsById(id) {
-  return await client.db("airbnb").collection("rooms").findOne({ id: id });
+  console.log(id)
+  return await client.db("airbnb").collection("rooms").findOne({ _id: ObjectId(id) });
 }
 
 async function CreateUser(data) {
