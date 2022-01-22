@@ -12,7 +12,7 @@ const router = express.Router();
 
 router
   .route("/")
-  .post( async (request, response) => {
+  .post(auth,async (request, response) => {
     const data = request.body;
     console.log(data);
     const result = await CreateRooms(data);
@@ -26,12 +26,12 @@ router
 //get rooms by id using get method//
 router
   .route("/:id")
-  .get( async (request, response) => {
+  .get(auth,async (request, response) => {
     const { id } = request.params;
     const aribnb = await GetroomsById(id);
     response.send(aribnb);
   })
-  .delete(async (request, response) => {
+  .delete(auth,async (request, response) => {
     const { id } = request.params;
     const airbnb = await DeleteRoomById(id);
     airbnb.deletedCount > 0
@@ -39,7 +39,7 @@ router
       : response.status(401).send({ message: "Page not found" });
   }) //delete room by id using delete method//
 
-  .put(async (request, response) => {
+  .put(auth,async (request, response) => {
     const { id } = request.params;
     const data = request.body;
     const result = await UpdateRoomsById(id, data);
