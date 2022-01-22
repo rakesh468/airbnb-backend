@@ -18,7 +18,7 @@ router
     const result = await CreateRooms(data);
     response.send(result);
   }) //adding rooms using post method//
-  .get(auth, async (request, response) => {
+  .get(async (request, response) => {
     const data = await Getrooms();
     response.send(data);
   }); //getting all rooms using get method//
