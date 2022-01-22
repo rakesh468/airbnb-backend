@@ -31,7 +31,7 @@ router
     const aribnb = await GetroomsById(id);
     response.send(aribnb);
   })
-  .delete(auth,async (request, response) => {
+  .delete(async (request, response) => {
     const { id } = request.params;
     const airbnb = await DeleteRoomById(id);
     airbnb.deletedCount > 0
@@ -39,7 +39,7 @@ router
       : response.status(401).send({ message: "Page not found" });
   }) //delete room by id using delete method//
 
-  .put(auth,async (request, response) => {
+  .put(async (request, response) => {
     const { id } = request.params;
     const data = request.body;
     const result = await UpdateRoomsById(id, data);
