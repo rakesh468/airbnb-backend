@@ -12,7 +12,7 @@ const router = express.Router();
 
 router
   .route("/")
-  .post(auth, async (request, response) => {
+  .post( async (request, response) => {
     const data = request.body;
     console.log(data);
     const result = await CreateRooms(data);
