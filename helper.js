@@ -12,7 +12,7 @@ async function DeleteRoomById(id) {
   return await client.db("airbnb").collection("rooms").deleteOne({_id: ObjectId(id) });
 }
 async function CreateRooms(data) {
-  return await client.db("airbnb").collection("rooms").insertMany(data);
+  return await client.db("airbnb").collection("rooms").insertOne(data);
 }
 
 async function GetroomsById(id) {
