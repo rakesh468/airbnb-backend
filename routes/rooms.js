@@ -26,7 +26,7 @@ router
 //get rooms by id using get method//
 router
   .route("/:id")
-  .get(auth, async (request, response) => {
+  .get( async (request, response) => {
     const { id } = request.params;
     const aribnb = await GetroomsById(id);
     response.send(aribnb);
