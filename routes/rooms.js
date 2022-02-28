@@ -31,7 +31,7 @@ router
     const aribnb = await GetroomsById(id);
     response.send(aribnb);
   })
-  .delete(async (request, response) => {
+  .delete(auth,async (request, response) => {
     const { id } = request.params;
     const airbnb = await DeleteRoomById(id);
     airbnb.deletedCount > 0
