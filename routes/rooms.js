@@ -39,7 +39,7 @@ router
       : response.status(401).send({ message: "Page not found" });
   }) //delete room by id using delete method//
 
-  .put(async (request, response) => {
+  .put(auth,async (request, response) => {
     const { id } = request.params;
     const data = request.body;
     const result = await UpdateRoomsById(id, data);
