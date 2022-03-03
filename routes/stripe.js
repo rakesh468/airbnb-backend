@@ -9,7 +9,7 @@ const router=express.Router();
 router.post("/payment",async(request,response)=>{
     console.log("Request:",request.body);
     let error;
-    let status;
+    let status; 
     try {
         const {rooms,token}=request.body;
 
@@ -18,7 +18,7 @@ router.post("/payment",async(request,response)=>{
             source:token.id
         });
        
-        const  idempotencyKey=uuidv4();
+        const  idempotency_Key=uuidv4();
         const charge=await stripe.charges.create({
             amount:rooms.total,
             currency:"usd",
@@ -26,7 +26,7 @@ router.post("/payment",async(request,response)=>{
             receipt_email:token.email,
             description:`Book the ${rooms.title}`,
             shipping:{
-                name:token.card.name,
+                name:token.card.title,
                 address:{
                     line1:token.card.address_line1,
                     line2:token.card.address_line2,
@@ -37,14 +37,14 @@ router.post("/payment",async(request,response)=>{
             }
 
         },{
-            idempotencyKey
+            idempotency_Key
         
         });
         console.log("Charge:",{charge});
         status="success";
       } catch (error) {
       console.error("Error:",error);
-      status="Failure"  
+      status="failure"  
     }
     response.json({error,status})
 })
