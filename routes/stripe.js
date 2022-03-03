@@ -1,7 +1,7 @@
 import express from "express";
-import Stripe from 'stripe';
-import { v4 as uuidv4 } from 'uuid';
-const stripe = new Stripe('sk_test_51KZ7tgSCLtg0NGDARCRWN60BEazDD7nxrNRjuQQQ2tUjNQGOXTUJ4ynZLXLsNURNInv60akmL7UdkrA3DwPocG9g00Hlq1Hnxx');
+import Stripe from "stripe";
+import { v4 as uuidv4 } from "uuid";
+const stripe = new Stripe("sk_test_51KZ7tgSCLtg0NGDARCRWN60BEazDD7nxrNRjuQQQ2tUjNQGOXTUJ4ynZLXLsNURNInv60akmL7UdkrA3DwPocG9g00Hlq1Hnxx");
 
 
 const router=express.Router();
