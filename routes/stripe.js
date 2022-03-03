@@ -43,7 +43,7 @@ router.post("/payment",async(request,response)=>{
         console.log("Charge:",{charge});
         status="success";
       } catch (error) {
-      console.error("Error:",error);
+      console.log(error)
       status="failure"  
     }
     response.json({error,status})
