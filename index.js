@@ -1,7 +1,8 @@
-import express from "express";
+import express, { response } from "express";
 import { MongoClient } from "mongodb";
 import { AirbnbRouter } from "./routes/rooms.js";
 import { UserRouter } from "./routes/users.js";
+import { StripeRouter } from "./routes/stripe.js";
 import dotenv from "dotenv";
 import cors from "cors";
 
@@ -32,5 +33,7 @@ app.get("/", (request, response) => {
 
 app.use("/airbnb", AirbnbRouter);
 app.use("/users", UserRouter);
+app.use("/home",StripeRouter);
+
 
 app.listen(PORT, () => console.log("Port Running in", PORT));
