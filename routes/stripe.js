@@ -11,7 +11,7 @@ router.post("/checkout",async(request,response)=>{
     let error;
     let status;
     try {
-        const {room,token}=request.body;
+        const {rooms,token}=request.body;
 
         const customer=await stripe.customers.create({
             email:token.email,
@@ -20,11 +20,11 @@ router.post("/checkout",async(request,response)=>{
        
         const  idempotencyKey=uuidv4();
         const charge=await stripe.charges.create({
-            amount:room.price,
+            amount:rooms.total,
             currency:"usd",
             customer:customer.id,
             receipt_email:token.email,
-            description:`Book the ${room.name}`,
+            description:`Book the ${rooms.title}`,
             shipping:{
                 name:token.card.name,
                 address:{
