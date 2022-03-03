@@ -6,7 +6,7 @@ const stripe = new Stripe('sk_test_51KZ7tgSCLtg0NGDARCRWN60BEazDD7nxrNRjuQQQ2tUj
 
 const router=express.Router();
 
-router.post("/checkout",async(request,response)=>{
+router.post("/payment",async(request,response)=>{
     console.log("Request:",request.body);
     let error;
     let status;
