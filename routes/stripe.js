@@ -20,7 +20,7 @@ router.post("/payment",async(request,response)=>{
        
         const  idempotency_Key=uuidv4();
         const charge=await stripe.charges.create({
-            amount:rooms.total,
+            amount:rooms.total * 100,
             currency:"usd",
             customer:customer.id,
             receipt_email:token.email,
