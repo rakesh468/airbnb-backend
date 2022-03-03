@@ -33,7 +33,7 @@ app.get("/", (request, response) => {
 
 app.use("/airbnb", AirbnbRouter);
 app.use("/users", UserRouter);
-app.use("/home",StripeRouter);
+app.use("/checkout",StripeRouter);
 
 
 app.listen(PORT, () => console.log("Port Running in", PORT));
